@@ -33,7 +33,9 @@ const Login = (props) => {
     axios.post(loginAPIUrl, requestBody, requestConfig)
       .then((response) => {
         setUserSession(response.data.user, response.data.token);
-        props.history.push('/Home');
+        sessionStorage.setItem('username',username);
+        props.history.push('/');
+        // props.history.push('/Home');
       })
       .catch((error) => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
