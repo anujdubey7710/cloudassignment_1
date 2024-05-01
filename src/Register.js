@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const registerUrl = 'https://q3358v04o2.execute-api.us-east-1.amazonaws.com/prod/register';
 
-const Register = () => {
+const Register = (props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -35,6 +35,7 @@ const Register = () => {
     axios.post(registerUrl, requestBody)
       .then(response => {
         // Handle successful registration
+        props.history.push('/login'); 
         console.log(response)
         // Redirect to login page or show success message
       })
